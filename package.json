@@ -2,7 +2,6 @@
   "name": "neighbourhood-map-es6",
   "version": "1.0.0",
   "description": "This shows the neighborhood map",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,5 +9,8 @@
   "license": "MIT",
   "dependencies": {
     "knockout": "^3.4.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
