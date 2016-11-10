@@ -1,0 +1,24 @@
+{
+  "name": "neighbourhood-map-es6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "live-server": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-server": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/debatanu-thakur/neighbourhood-map-es6.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/debatanu-thakur/neighbourhood-map-es6/issues"
+  },
+  "homepage": "https://github.com/debatanu-thakur/neighbourhood-map-es6#readme"
+}

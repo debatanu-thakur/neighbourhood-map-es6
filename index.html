@@ -7,12 +7,26 @@
   <title>Neighborhood Map</title>
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="third-party/materialize/css/materialize.css" media="screen">
-  <link rel="stylesheet" href="main.css" media="screen">
+  <link rel="stylesheet" href="css/main.css" media="screen">
 </head>
 <body>
+  <header>
+    <nav class="lime lighten-1" role="navigation">
+      <div class="nav-wrapper container">
+        <a href="" id="logo-container" class="brand-logo">NMap</a>
+        <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+  </header>
+  <main></main>
+  <footer></footer>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC2Xryh23SOWVxOqNWKPDANkB9SQpPGe00&libraries=places" async></script>
 <script src="third-party/jquery/jquery.js"></script>
 <script src="third-party/materialize/js/materialize.js"></script>
 <script src="third-party/knockout/knockout.js"></script>
+<script src="JS/main.js"></script>
 </body>
 </html>
