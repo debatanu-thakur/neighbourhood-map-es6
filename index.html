@@ -43,7 +43,7 @@
         </ul>
   </header>
   <main>
-    <div class="map"></div>
+    <div id="map"></div>
   </main>
   <footer></footer>
 
@@ -73,10 +73,11 @@
      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
    </div>
  </div>
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC2Xryh23SOWVxOqNWKPDANkB9SQpPGe00&libraries=places" async></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC2Xryh23SOWVxOqNWKPDANkB9SQpPGe00&v=3&callback=initMap" async defer></script>
 <script src="third-party/jquery/jquery.js"></script>
 <script src="third-party/materialize/js/materialize.js"></script>
 <script src="third-party/knockout/knockout.js"></script>
 <script src="JS/main.js"></script>
+<script src="JS/MAP/map.js"></script>
 </body>
 </html>
