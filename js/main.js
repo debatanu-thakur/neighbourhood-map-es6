@@ -1,7 +1,7 @@
 (function($){
   $(function(){
     //Event initializations
-    $('.button-collapse').sideNav();
+    $('.collapse').sideNav();
     $('.modal').modal();
     $('input#search').focus(function() { $(this).parent().addClass('focused'); });
     $('input#search').blur(function() {

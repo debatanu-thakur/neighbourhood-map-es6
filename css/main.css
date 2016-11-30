@@ -1,5 +1,9 @@
+html, body, main {
+  height: 100%;
+  width: 100%;
+}
 header, main, footer {
-  padding-left: 300px;
+  padding-left: 0;
 }
 
 .change__location {
@@ -12,7 +16,9 @@ header, main, footer {
 }
 
 #map {
-  height: 500px;
+  height: 100%;
+  width: 100%;
+  background-color: #ccc;
 }
 
 @media only screen and (max-width: 992px) {
