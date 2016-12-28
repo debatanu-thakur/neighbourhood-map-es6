@@ -4,7 +4,6 @@
 	$(function() {
 		//Event initializations
 		$('.collapse').sideNav();
-		$('.modal').modal();
 		$('input#search').focus(function() {
 			$(this).parent().addClass('focused');
 		});

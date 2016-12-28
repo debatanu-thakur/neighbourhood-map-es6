@@ -25,6 +25,14 @@ header, main, footer {
   border-top: 1px solid #e9e9e9;
   background-color: #fff;
 }
+
+/*
+* Searching places
+*/
+.input-field .places.active {
+  -webkit-transform: translateY(-80%);
+  transform: translateY(-80%);
+}
 @media only screen and (max-width: 992px) {
   header, main, footer {
     padding-left: 0;

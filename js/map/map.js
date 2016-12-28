@@ -5,7 +5,7 @@ function initMap() {
 	  center: myApp.area || {lat: 40.74, lng: -73.99 },
 	  zoom: 13
 	});
-	var input = document.getElementById('searchPlace');
+	var input = document.getElementById('icon_prefix');
 	// var autocomplete = new google.maps.places.Autocomplete(input);
 	var displaySuggestions = function(predictions, status) {
 		if (status != google.maps.places.PlacesServiceStatus.OK) {
