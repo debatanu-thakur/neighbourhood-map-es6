@@ -5,11 +5,13 @@ function initMap() {
 	  center: myApp.area || {lat: 40.74, lng: -73.99 },
 	  zoom: 13
 	});
+
 	var input = document.getElementById('icon_prefix');
 	// var autocomplete = new google.maps.places.Autocomplete(input);
 	var displaySuggestions = function(predictions, status) {
-		if (status != google.maps.places.PlacesServiceStatus.OK) {
-			alert(status);
+		if (status !== google.maps.places.PlacesServiceStatus.OK) {
+			// alert(status);
+			window.NOTIFY.error_message(status, 4000);
 			return;
 		}
 
@@ -38,5 +40,8 @@ function initMap() {
 			}, displaySuggestions);
 		}.bind(this), 100);
 	});
+
+	//GEO-Location
+	//Get place name
 
 }

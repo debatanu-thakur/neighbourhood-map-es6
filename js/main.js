@@ -18,7 +18,15 @@
 			});
 		}
 	}); // end of document ready
+	window.NOTIFY = {
+		success_message: function(message, duration) {
+			Materialize.toast(message, duration, 'card-panel teal lighten-2');
 
+		},
+		error_message: function(message, duration) {
+			Materialize.toast(message, duration, 'card-panel red lighten-2');
+		},
+	};
 	/*
 	 * to check whether the device has touch enabled
 	 */

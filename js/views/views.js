@@ -23,6 +23,7 @@
      lng: -73.99
    };
    self.searchNeighbors.subscribe(self.search);
+   self.searchList.extend({ rateLimit: 50 });
  };
 
  //List of neighbor model

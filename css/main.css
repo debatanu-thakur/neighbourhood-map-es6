@@ -24,14 +24,16 @@ header, main, footer {
   margin: 0;
   border-top: 1px solid #e9e9e9;
   background-color: #fff;
+  max-height: 200px;
+  overflow: auto;
 }
 
 /*
 * Searching places
 */
 .input-field .places.active {
-  -webkit-transform: translateY(-80%);
-  transform: translateY(-80%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 @media only screen and (max-width: 992px) {
   header, main, footer {
