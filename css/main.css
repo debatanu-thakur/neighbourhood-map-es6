@@ -29,6 +29,13 @@ header, main, footer {
 }
 
 /*
+* Search the locations
+*/
+#nav-mobile li.search {
+  position: relative;
+  top: 15px;
+}
+/*
 * Searching places
 */
 .input-field .places.active {

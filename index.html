@@ -22,43 +22,12 @@
 		</nav>
 
 		<ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
-			<li>
-				<div class="container">
-					<div class="divider"></div>
-					<div class="section">
-						<div class="container">
-							<div class="nav-wrapper">
-								<div class="row search">
-
-								<div class="input-field col s12 search-wrapper card">
-								<i class="material-icons prefix">location_on</i>
-								<!--currentLocation: The current location -->
-          			<input id="icon_prefix" type="text" data-bind ="value: currentLocation" />
-								<label for="icon_prefix" class="places">Location</label>
-								<div class="pac-container search-results">
-								</div>
-							</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="divider"></div>
-				</div>
-			</li>
-			<li class="search">
-				<div class="search-wrapper card">
-					<!--searchNeighbors: Search the list of neighbors -->
-					<input id="search" data-bind="value: searchNeighbors, valueUpdate: 'keyup'"><i class="material-icons" data-bind="click: search">search</i>
-					<div class="search-results"></div>
-				</div>
-			</li>
 
 			<li class="bold">
-				<ul data-bind="foreach: searchList" style="margin-top:25px">
-					<li>
-						<a  href="#" class="wave-effect waves-teal" data-bind="text: location"></a>
-					</li>
-				</ul>
+				
+			</li>
+			<li>
+				<nav-tabs></nav-tabs>
 			</li>
 		</ul>
 	</header>
@@ -71,9 +40,10 @@
 	<script src="third-party/materialize/js/materialize.js"></script>
 	<script src="third-party/knockout/knockout.js"></script>
 	<script src="js/main.js"></script>
-  <script src="js/model/model.js"></script>
-  <script src="js/views/views.js"></script>
-	<script src="js/map/map.js"></script>
+  	<script src="js/model/model.js"></script>
+  	<script src="js/views/templates.js"></script>
+  	<script src="js/views/views.js"></script>
+  	<script src="js/map/map.js"></script>
 </body>
 
 </html>

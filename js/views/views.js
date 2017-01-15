@@ -87,6 +87,10 @@
    }
 
  };
+ myApp.locationList = locationList;
  window.myApp = myApp;
+ myApp.templates.forEach(function(item, index) {
+   ko.components.register(item.name, item.prop);
+ });
  ko.applyBindings(new ViewModel());
 }(window.myApp, jQuery));

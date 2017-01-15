@@ -1,5 +1,6 @@
-(function($) {
+(function(myApp, $) {
 	'use strict';
+	myApp = !myApp ? {} : myApp;
 
 	$(function() {
 		//Event initializations
@@ -38,5 +39,6 @@
 			return false;
 		}
 	}
-
-})(jQuery); // end of jQuery name space
+	
+	window.myApp = myApp;
+})(window, jQuery); // end of jQuery name space
