@@ -93,7 +93,11 @@ function initMap() {
 			//TODO: Populate the text in the search box
 			//For loc = results[0].geometry.location.lat()
 			//for add = results[1].formatted_address
-			console.log('details ', results[0].geometry.location.lat(), results[0].formatted_address);
+			if (results[1]) {
+				console.log('adress', results[1].formatted_address)
+			} else {
+				console.log('location ', results[0].geometry.location.lat(), results[0].geometry.location.lng());
+			}
 		} else {
 			//TODO: Alert that it failed to load the data
 		};
@@ -132,5 +136,20 @@ function initMap() {
 		marker.setMap(null);
 	}
 
+	//Infowindow
+	
+	var createInfoWindow = function(content) {
+		return new google.maps.InfoWindow({
+			content: content
+		});
+	};
+
+	var setInfoWindowContent = function(infoWindow, content) {
+		infoWindow.setContent(content);
+	};
+
+	var openInfoWindow = function(infoWindow, map, marker) {
+		infoWindow.open(map, marker);
+	};
 }
 
