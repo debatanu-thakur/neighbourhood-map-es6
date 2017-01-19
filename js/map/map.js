@@ -42,6 +42,67 @@ function initMap() {
 	});
 
 	//GEO-Location
-	//Get place name
+	var geocoder = new google.maps.Geocoder();
+	/**
+	 * Get the current location
+	 */
+	var getCurrentLoc = function() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				//TODO: Set the info window on the Location
+				//and fetch the neighbours
+				console.log('position', position);
+			}, function() {
+				console.log('error');
+				//TODO: take default location and load neighbors
+				//Show message that failed to locate				
+			});
+		} else {
+			//same as failed locate
+		};
+	};
+	
+	/**
+	 * Get the place name by passing the latitude
+	 */
+	var getLocName = function(lat, lng) {
+
+		geocoder.geocode({
+			location: {
+				lat: lat,
+				lng: lng
+			}
+		}, GeocoderResult);
+	}
+	/**
+	 * Get the lat-lng for a place adress
+	 */
+	var getLocation = function(adress) {
+
+		geocoder.geocode({
+			address: adress
+		}, GeocoderResult);
+	}
+
+	/**
+	 * Get the geo coder result
+	 */
+	var GeocoderResult = function (results, status) {
+		if (status === 'OK') {
+			//TODO: Populate the text in the search box
+			//For loc = results[0].geometry.location.lat()
+			//for add = results[1].formatted_address
+			console.log('details ', results[0].geometry.location.lat(), results[0].formatted_address);
+		} else {
+			//TODO: Alert that it failed to load the data
+		};
+	}
+	// getLocation('New York');
+	// getLocName(myApp.area.lat, myApp.area.lng);
+	
 
 }
+
+/**
+ * Restrict display of context menu based on report status
+ */

@@ -88,6 +88,57 @@
 				</ul>`
         }
     }
+    templates.push(searchList);
 
+    var mainApp = {
+        name: 'main-app',
+        prop: {
+            viewModel: function(params) {
+                var self = this;
+                self.currentLocation = ko.observable('');
+                self.searchNeighbors = ko.observable('');
+                self.searchList = ko.observableArray(locationList.slice(0));
+                self.search = function() {
+                    var value = self.searchNeighbors();
+                    self.searchList.removeAll();
+                    locationList.forEach(function(items) {
+                    if (items.location.toLowerCase().indexOf(value.toLowerCase()) > -1) {
+                        self.searchList.push(items);
+                    }
+                    });
+                };
+                myApp.area = {
+                    lat: 40.74,
+                    lng: -73.99
+                };
+                self.searchNeighbors.subscribe(self.search);
+                self.searchList.extend({ rateLimit: 50 });
+            },
+            template: `
+            <header>
+                <nav class="lime">
+                    <div class="container">
+                        <a href="#" data-activates="nav-mobile" class="collapse">
+                            <i class="material-icons">menu</i></a>
+                    </div>
+                </nav>
+
+                <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
+
+                    <li class="bold">
+                        
+                    </li>
+                    <li>
+                        <nav-tabs></nav-tabs>
+                    </li>
+                </ul>
+            </header>
+            <main>
+                <div id="map"></div>
+            </main>
+            <footer></footer>`
+        }
+    };
+    templates.push(mainApp);
     myApp.templates = templates;
 })(window.myApp);
