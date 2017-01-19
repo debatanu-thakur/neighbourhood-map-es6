@@ -42,7 +42,6 @@ function initMap() {
 	});
 
 	//GEO-Location
-	var geocoder = new google.maps.Geocoder();
 	/**
 	 * Get the current location
 	 */
@@ -66,6 +65,7 @@ function initMap() {
 	 * Get the place name by passing the latitude
 	 */
 	var getLocName = function(lat, lng) {
+	var geocoder = new google.maps.Geocoder();
 
 		geocoder.geocode({
 			location: {
@@ -73,21 +73,22 @@ function initMap() {
 				lng: lng
 			}
 		}, GeocoderResult);
-	}
+	};
 	/**
 	 * Get the lat-lng for a place adress
 	 */
 	var getLocation = function(adress) {
+	var geocoder = new google.maps.Geocoder();
 
 		geocoder.geocode({
 			address: adress
 		}, GeocoderResult);
-	}
+	};
 
 	/**
 	 * Get the geo coder result
 	 */
-	var GeocoderResult = function (results, status) {
+	var GeocoderResult = function(results, status) {
 		if (status === 'OK') {
 			//TODO: Populate the text in the search box
 			//For loc = results[0].geometry.location.lat()
@@ -96,13 +97,40 @@ function initMap() {
 		} else {
 			//TODO: Alert that it failed to load the data
 		};
-	}
-	// getLocation('New York');
+	};
+	getLocation('New York');
 	// getLocName(myApp.area.lat, myApp.area.lng);
 	
+	//Marker
+	var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	var labelIndex = 0;
+
+	/**
+	 * Add marker with default labels
+	 */
+	var addMarker = function(location, map) {
+		var marker = new google.maps.Marker({
+			position: location,
+			map: map,
+			label: labels[labelIndex++ % labels.length]
+		});
+
+		return marker;
+	};
+	
+	/**
+	 * Set a marker to the map
+	 */
+	var setMapMarker = function(marker, map) {
+		marker.setMap(map);
+	};
+
+	/**
+	 * Remove marker from map
+	 */
+	var removeMarker = function(marker) {
+		marker.setMap(null);
+	}
 
 }
 
-/**
- * Restrict display of context menu based on report status
- */
