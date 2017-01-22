@@ -21,6 +21,7 @@ var config = {
         port: 8700,
         inline: true,
         hot: true,
+        watchContentBase: true,
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
