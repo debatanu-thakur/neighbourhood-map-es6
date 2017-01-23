@@ -1,5 +1,7 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
     context: path.resolve(__dirname, './src'),
@@ -24,6 +26,15 @@ var config = {
         watchContentBase: true,
     },
     plugins: [
+        new ExtractTextPlugin({
+            filename: '[name].css',
+            disable: false,
+            allChunks: true,
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'index.html',
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
@@ -35,12 +46,59 @@ var config = {
         new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
-			'window.jQuery': 'jquery'
 		}),
         new webpack.ProvidePlugin({
 			ko: 'knockout',
 		}),
     ],
+    module: {
+        rules: [
+            {
+                test: /\.html$/,
+                loader: 'html-loader',
+            },
+            {
+                test: /\.js/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: { presets: ['es2015'] },
+                    },
+                ],
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract( {
+                    fallbackLoader: 'style-loader',
+                    loader: [ { loader: 'css-loader', options: { modules: true} },  ],
+                }),
+            },
+            {
+				test: /\.(jpg|png|gif|svg)$/,
+				loader: [
+					{
+						loader: 'url-loader',
+						query: {
+							limit: 2000,
+							name: 'assets/[name].[ext]'
+						}
+					}
+				]
+			},
+			{
+				test: /\.(ico|woff)$/,
+				loader: [
+					{
+						loader: 'url-loader',
+						query: {
+							limit: 1,
+							name: 'assets/[name].[ext]'
+						}
+					}
+				]
+			}
+        ]
+    },
 };
 
 module.exports = config;
