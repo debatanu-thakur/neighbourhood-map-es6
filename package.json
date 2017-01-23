@@ -3,22 +3,27 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "live-server": "^1.1.0"
-  },
-  "devDependencies": {},
+  "author": "debatanu-thakur",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "live-server": "live-server"
+    "build": "webpack-dev-server",
+    "prod": "webpack -p"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/debatanu-thakur/neighbourhood-map-es6.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/debatanu-thakur/neighbourhood-map-es6/issues"
   },
-  "homepage": "https://github.com/debatanu-thakur/neighbourhood-map-es6#readme"
+  "homepage": "https://github.com/debatanu-thakur/neighbourhood-map-es6#readme",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "knockout": "^3.4.1"
+  },
+  "devDependencies": {
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.26.0",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
+  }
 }
