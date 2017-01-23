@@ -50,6 +50,9 @@ var config = {
         new webpack.ProvidePlugin({
 			ko: 'knockout',
 		}),
+        new webpack.ProvidePlugin({
+			Hammer: 'hammerjs',
+		}),
     ],
     module: {
         rules: [
@@ -86,7 +89,7 @@ var config = {
 				]
 			},
 			{
-				test: /\.(ico|woff)$/,
+				test: /\.(ico|woff|eot|woff2|ttf)$/,
 				loader: [
 					{
 						loader: 'url-loader',
