@@ -46,6 +46,7 @@ var config = {
         new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
+            'window.jQuery': 'jquery'
 		}),
         new webpack.ProvidePlugin({
 			ko: 'knockout',
@@ -53,6 +54,7 @@ var config = {
         new webpack.ProvidePlugin({
 			Hammer: 'hammerjs',
 		}),
+        
     ],
     module: {
         rules: [

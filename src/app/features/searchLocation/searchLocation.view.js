@@ -4,3 +4,5 @@ class SearchLocationView {
         this.search = params && params.search || function() {};
     }
 }
+
+export default SearchLocationView;

@@ -3,15 +3,16 @@ class AppView {
         var self = this;
         self.currentLocation = ko.observable('');
         self.searchNeighbors = ko.observable('');
-        self.searchList = ko.observableArray(locationList.slice(0));
+        // self.searchList = ko.observableArray(locationList.slice(0));
+        self.searchList = ko.observableArray(['a']);
         self.search = function() {
             var value = self.searchNeighbors();
             self.searchList.removeAll();
-            locationList.forEach(function(items) {
-            if (items.location.toLowerCase().indexOf(value.toLowerCase()) > -1) {
-                self.searchList.push(items);
-            }
-            });
+            // locationList.forEach(function(items) {
+            // if (items.location.toLowerCase().indexOf(value.toLowerCase()) > -1) {
+            //     self.searchList.push(items);
+            // }
+            // });
         };
 
         //TODO: Use singleton object to communicate
