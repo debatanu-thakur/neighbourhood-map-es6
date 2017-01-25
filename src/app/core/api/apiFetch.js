@@ -43,7 +43,7 @@ class APIFetch {
             error(err) {
                 //TODO: Proper error message
                 defered.reject({
-                    error: 'Some error';
+                    error: 'Some error'
                 })
             }
         });
