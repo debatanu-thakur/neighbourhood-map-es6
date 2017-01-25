@@ -1,8 +1,10 @@
 import * as dom from './dom/domInit';
-import * as map from './map/map';
-import * as api from './api/apiFetch';
+import mapCore from './map/map';
+import apiCore from './api/apiFetch';
 
 export default {
-    map,
-    api
+    map: new mapCore(),
+    api: new apiCore()
 };
+
+

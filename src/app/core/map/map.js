@@ -42,15 +42,19 @@
 // 	});
 
 // }
+import GeoServices from './geoServices';
+import MapMarker from './mapMarker';
+import MapInfoWindow from './mapInfoWindow';
+
 class MapOperations {
 	constructor() {
 		//Assigning default location
 		//to map
 		this.area = {
-			lat: 1,
-			lng: 2
+			lat: 40.74,
+			lng: -73.99
 		};
-		
+		this.zoom = 13;
 	}
 
 	/**
@@ -64,8 +68,8 @@ class MapOperations {
 	/**
 	 * Initializes the map functions
 	 */
-	initMap() {
-		
+	initMap(element) {
+		this.setupMap(element, this.area, this.zoom);
 	}
 
 	/**
@@ -74,9 +78,12 @@ class MapOperations {
 	setupMap(ele, center, zoom) {
 		if (this.map) {
 			//TODO: change the center and zoom if any
+			console.log('i am ahere');
 		} else {
+			console.log('i am somewhere', ele, center, zoom);			
 			this.map = new google.maps.Map(ele, {center, zoom});
 		};
 
 	}
-}
+};
+export default MapOperations;
