@@ -1,7 +1,5 @@
-(function(myApp, $) {
+(function($) {
 	'use strict';
-	myApp = !myApp ? {} : myApp;
-
 	$(function() {
 		//Event initializations
 		$('.collapse').sideNav();
@@ -40,5 +38,4 @@
 		}
 	}
 	
-	window.myApp = myApp;
-})(window, jQuery); // end of jQuery name space
+})(jQuery); // end of jQuery name space

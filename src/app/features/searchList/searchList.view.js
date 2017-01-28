@@ -1,7 +1,17 @@
 
 class SearchListView {
     constructor(params) {
-        this.searchListData = params.places;
+        const self = this;
+
+        self.searchListData = params.places;
+        self.currentActive = ko.observable({name: ''});
+        self.activate = function() {
+            self.currentActive(this);
+        };
+        // self.isActive = ko.pureComputed(function() {
+        //     console.log(self.currentActive(), this);
+        //     return false;
+        // });
     }
 }
 

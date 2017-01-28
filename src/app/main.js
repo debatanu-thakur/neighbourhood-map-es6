@@ -11,15 +11,15 @@ myApp.core = core;
 ko.components.register(app.name, app.prop);
 ko.applyBindings();
 
-// $.getScript('https://www.google.com/jsapi', function()
-// {
-//     google.load('maps', '3', {
-//         other_params: `key=AIzaSyC2Xryh23SOWVxOqNWKPDANkB9SQpPGe00&libraries=places`,
-//         callback: function()
-//         {
-//             const element = document.getElementById('map');
+$.getScript('https://www.google.com/jsapi', function()
+{
+    google.load('maps', '3', {
+        other_params: `key=AIzaSyC2Xryh23SOWVxOqNWKPDANkB9SQpPGe00&libraries=places`,
+        callback: function()
+        {
+            const element = document.getElementById('map');
 
-//             myApp.INIT(element);
-//         }
-//     });
-// });
+            myApp.INIT(element);
+        }
+    });
+});

@@ -109,10 +109,45 @@ class MapOperations {
 	}
 
 	/**
+	 * AllMarkers
+	 */
+	get AllMarkers() {
+		this.allMarkers = this.allMarkers || [];
+		return this.allMarkers;
+	}
+
+	set AllMarkers(marker) {
+		this.allMarkers.push(marker);
+	}
+
+	/**
+	 * ClearMarkers
+	 */
+	ClearMarkers(markers) {
+		this.RemoveAllMarkers(markers);
+		markers.splice(0);
+	}
+
+	/**
+	 * Remove All Markers
+	 */
+	RemoveAllMarkers(markers) {
+		markers.forEach((marker) => this.MAPMarker.RemoveMarker(marker));
+	}
+
+	/**
+     * Set markers up for visible data
+     */
+    SetMarkers(allData) {
+        allData.forEach((item) => {
+            this.MAPMarker.SetMapMarker(item.marker, this.DrawnMap);
+        })
+    }
+	/**
 	 * Initialize new google Map
 	 */
 	setupMap(ele, center, zoom) {
-		if (this.map) {
+		if (this.DrawnMap) {
 			//TODO: change the center and zoom if any
 		} else {
 			this.map = new google.maps.Map(ele, {center, zoom});

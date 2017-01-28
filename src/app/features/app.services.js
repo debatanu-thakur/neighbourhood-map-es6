@@ -12,18 +12,24 @@ class AppServices {
     }
 
     GenerateMarkers(venues) {
-        this.locationList.length = 0;
+        this.locationList.splice(0);
+        const map = this.core.map;
+
+        map.ClearMarkers(map.AllMarkers);
+
         venues.forEach((item) => {
-            this.core.map.MAPMarker.AddMarker(item.location.position, this.core.map.DrawnMap);
-            this.locationList.push(item);
+            const marker = map.MAPMarker.AddMarker(item.location.position, map.DrawnMap);
+
+            map.AllMarkers = marker;
+            this.locationList.push(Object.assign(item, {marker}));
         });
-        const data = locationList.slice(0);
+        const data = this.locationList.slice(0);
 
         this.SEARCHLIST.removeAll();
         this.SEARCHLIST(data);
     }
 
-
+    
 }
 
 export default new AppServices();

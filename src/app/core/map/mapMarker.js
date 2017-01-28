@@ -33,6 +33,7 @@ class MapMarker {
      * Remove the marker from map
      */
     RemoveMarker(marker) {
+        console.log(marker, 'Iam ere');
         marker.setMap(null);
     }
 

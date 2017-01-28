@@ -9,18 +9,21 @@ class AppView {
         self.searchList = ko.observableArray(locationList.slice(0) || []);
         myApp.SEARCHLIST = self.searchList;
         self.search = function() {
-            var value = self.searchNeighbors();
+            const value = self.searchNeighbors();
+
             self.searchList.removeAll();
-            console.log(myApp.locationList, value);
             myApp.locationList.forEach(function(items) {
             if (items.name.toLowerCase().includes(value.toLowerCase())) {
-                console.log('items. ', items);
                 self.searchList.push(items);
             }
             });
         };
 
-        self.searchNeighbors.subscribe(self.search);
+        self.searchNeighbors.subscribe(() => {
+            myApp.core.map.RemoveAllMarkers(myApp.core.map.AllMarkers);
+            self.search();
+            myApp.core.map.SetMarkers(self.searchList());
+        });
         self.searchList.extend({ rateLimit: 50 });
 
     }
