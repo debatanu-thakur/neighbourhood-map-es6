@@ -50,9 +50,7 @@ function initMap() {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				//TODO: Set the info window on the Location
 				//and fetch the neighbours
-				console.log('position', position);
 			}, function() {
-				console.log('error');
 				//TODO: take default location and load neighbors
 				//Show message that failed to locate				
 			});

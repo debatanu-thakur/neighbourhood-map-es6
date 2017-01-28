@@ -1,5 +1,3 @@
-<ul data-bind="foreach: searchList" style="margin-top:25px">
-	<li>
-		<a href="#" class="wave-effect waves-teal" data-bind="text: location"></a>
-	</li>
-</ul>
+<div data-bind="foreach: searchListData" style="margin-top:25px" class="collection">
+		<a href="#" class="collection-item" data-bind="text: name"></a>
+</div>

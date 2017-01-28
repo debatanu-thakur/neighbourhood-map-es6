@@ -18,12 +18,8 @@ $.getScript('https://www.google.com/jsapi', function()
         callback: function()
         {
             const element = document.getElementById('map');
-            console.log(myApp);
-            myApp.INIT(element, (location) => {
-                myApp.core.api.GetAPIInfo(location).then((resp) => {
-                    console.log('resp', resp);
-                });
-            });
+
+            myApp.INIT(element);
         }
     });
 });

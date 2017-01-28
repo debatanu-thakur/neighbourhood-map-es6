@@ -54,7 +54,6 @@
        url: this.endpoint,
        data: $.param(this.params),
        success: function(resp) {
-         console.log('foursquare data', resp);
          defered.resolve(resp);
        },
        error: function(err) {

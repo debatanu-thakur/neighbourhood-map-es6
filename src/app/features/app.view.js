@@ -1,5 +1,4 @@
-import * as myApp from './app.services';
-console.log(myApp);
+import myApp from './app.services';
 class AppView {
     constructor(params) {
         const self = this;
@@ -7,7 +6,8 @@ class AppView {
 
         self.currentLocation = ko.observable('');
         self.searchNeighbors = ko.observable('');
-        self.searchList = ko.observableArray(locationList.slice(0));
+        self.searchList = ko.observableArray(locationList);
+        myApp.SEARCHLIST = self.searchList;
         self.search = function() {
             var value = self.searchNeighbors();
             self.searchList.removeAll();
@@ -17,12 +17,6 @@ class AppView {
             }
             });
         };
-
-        //TODO: Use singleton object to communicate
-        // myApp.area = {
-        //     lat: 40.74,
-        //     lng: -73.99
-        // };
 
         self.searchNeighbors.subscribe(self.search);
         self.searchList.extend({ rateLimit: 50 });
