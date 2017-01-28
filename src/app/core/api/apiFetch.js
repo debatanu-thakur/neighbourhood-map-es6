@@ -1,13 +1,13 @@
 import $ from 'jquery';
+import Venue from './venue';
 
 class APIFetch {
-    constructor(location) {
+    constructor() {
         this.endpoint = `//api.foursquare.com/v2/venues/search`;
         this.client_id = `TG5QHMCNUODCOUEHWRW033BO4X2MQM2ZUGF1OHA2YCHIS1XF`;
         this.client_secret= `E1Q4ATW0B23NZ3BGUMH5VECGWFPB3I1GWOFD3HXTMAI1PHZ1`;
         this.v = ``;
         this.ll=``;
-        this.location = location
     }
 
     getFormattedDate(date) {
@@ -20,17 +20,18 @@ class APIFetch {
         return `${year}${month}${day}`;
     }
 
-    getLatLng() {
+    getLatLng(location) {
         return `${location.lat.toString()},${location.lng.toString()}`;
     }
 
-    getAPIInfo() {
+    GetAPIInfo(location) {
         const defered = $.Deferred();
         const date = this.getFormattedDate(new Date());
-        this.setAPIParams(date, this.getLatLng());
+        this.setAPIParams(date, this.getLatLng(location));
         
         $.ajax({
             url: this.endpoint,
+            dataType: 'jsonp',
             data: $.param({
                 client_id: this.client_id,
                 client_secret: this.client_secret,
@@ -38,7 +39,7 @@ class APIFetch {
                 ll: this.ll
             }),
             success(resp) {
-                defered.resolve(resp);
+                defered.resolve(resp.response.venues.map(v => new Venue(v)));
             },
             error(err) {
                 //TODO: Proper error message

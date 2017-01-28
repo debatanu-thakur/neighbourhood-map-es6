@@ -42,6 +42,7 @@
 // 	});
 
 // }
+
 import GeoServices from './geoServices';
 import MapMarker from './mapMarker';
 import MapInfoWindow from './mapInfoWindow';
@@ -54,22 +55,57 @@ class MapOperations {
 			lat: 40.74,
 			lng: -73.99
 		};
-		this.zoom = 13;
+		this.address = 'New York City';
+		this.zoom = 17;
+
+		//Assigning the services
 	}
 
 	/**
 	 * Returns the map object
 	 * Keeps the map object 
 	 */
-	get Map() {
+	get DrawnMap() {
 		return this.map;
+	}
+
+	/**
+	 * Assigning the services
+	 */
+	//Geo Service
+	get GEOServices() {
+		this.geoServices = this.geoServices || new GeoServices(window.navigator);
+		return this.geoServices;
+	}
+	//Map Marker
+	get MAPMarker() {
+		this.mapMarker = this.mapMarker || new MapMarker();
+		return this.mapMarker;
+	}
+	//Map Info Window
+	get MAPINFOWindow() {
+		this.mapInfoWindow = this.mapInfoWindow || new MapInfoWindow();
+		return this.mapInfoWindow;
 	}
 
 	/**
 	 * Initializes the map functions
 	 */
-	initMap(element) {
-		this.setupMap(element, this.area, this.zoom);
+	initMap(element, apiFetch) {
+		// this.setupMap(element, this.area, this.zoom);
+		this.GEOServices.GetCurrentLocation((position) => {
+			if (position) {
+				const coords = position.coords;
+				this.area = {
+					lat: coords.latitude,
+					lng: coords.longitude
+				};
+			}
+			this.setupMap(element, this.area, this.zoom);
+			if (apiFetch) {
+				apiFetch(this.area);
+			}
+		});
 	}
 
 	/**
@@ -78,9 +114,7 @@ class MapOperations {
 	setupMap(ele, center, zoom) {
 		if (this.map) {
 			//TODO: change the center and zoom if any
-			console.log('i am ahere');
 		} else {
-			console.log('i am somewhere', ele, center, zoom);			
 			this.map = new google.maps.Map(ele, {center, zoom});
 		};
 

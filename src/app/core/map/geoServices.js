@@ -14,8 +14,8 @@ class GeoLocationService {
         if (this.navigator.geolocation) {
             return this.navigator
             .geolocation.getCurrentPosition(
-                (position) => position,
-                () => false);
+                position => callback(position),
+                () => callback(false));
         } 
 
         return false;
