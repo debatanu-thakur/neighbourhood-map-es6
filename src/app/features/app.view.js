@@ -6,13 +6,15 @@ class AppView {
 
         self.currentLocation = ko.observable('');
         self.searchNeighbors = ko.observable('');
-        self.searchList = ko.observableArray(locationList);
+        self.searchList = ko.observableArray(locationList.slice(0) || []);
         myApp.SEARCHLIST = self.searchList;
         self.search = function() {
             var value = self.searchNeighbors();
             self.searchList.removeAll();
+            console.log(myApp.locationList, value);
             myApp.locationList.forEach(function(items) {
-            if (items.location.toLowerCase().includes(value.toLowerCase())) {
+            if (items.name.toLowerCase().includes(value.toLowerCase())) {
+                console.log('items. ', items);
                 self.searchList.push(items);
             }
             });

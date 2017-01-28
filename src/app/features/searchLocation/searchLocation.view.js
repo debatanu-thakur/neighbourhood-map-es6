@@ -2,10 +2,8 @@ import myApp from '../app.services';
 
 class SearchLocationView {
     constructor(params) {
-        this.searchNeighbors = ko.observable('');
+        this.searchNeighbors = params.search;
         this.searchLocList = params.locations;
-        // myApp.locationList = searchLocList;
-        this.search = params && params.search || function() {};
     }
 }
 

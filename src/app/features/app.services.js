@@ -1,6 +1,6 @@
 class AppServices {
     constructor() {
-        this.locationList = [];
+        this.locationList = [{name: 'london'}, {name: 'america'}, {name: 'new york'}, {name: 'delhi'}];
     }
 
     INIT(element) {
@@ -17,7 +17,7 @@ class AppServices {
             this.core.map.MAPMarker.AddMarker(item.location.position, this.core.map.DrawnMap);
             this.locationList.push(item);
         });
-        const data = this.SEARCHLIST().splice(0);
+        const data = locationList.slice(0);
 
         this.SEARCHLIST.removeAll();
         this.SEARCHLIST(data);
