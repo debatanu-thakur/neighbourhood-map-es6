@@ -25,6 +25,11 @@ class AppView {
             myApp.core.map.SetMarkers(self.searchList());
         });
         self.searchList.extend({ rateLimit: 50 });
+        self.attrs = {
+            callback(venue) {
+                myApp.core.map.OpenInfo(venue);
+            }
+        };
 
     }
 }

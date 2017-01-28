@@ -37,6 +37,23 @@ class MapMarker {
         marker.setMap(null);
     }
 
+    /**
+     * Remove animation if any 
+     * from the marker
+     */
+    RemoveAnimation(marker) {
+        if (marker.getAnimation()) {
+            marker.setAnimation(null);
+        }
+    }
+
+    /**
+     * Setup the marker with animation
+     */
+    SetAnimation(marker) {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+
 }
 
 export default MapMarker;

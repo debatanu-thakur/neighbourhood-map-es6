@@ -143,6 +143,43 @@ class MapOperations {
             this.MAPMarker.SetMapMarker(item.marker, this.DrawnMap);
         })
     }
+
+	/**
+	 * Get Info Window
+	 */
+	get INFOWindow() {
+		this.infoWindow = this.infoWindow || this.MAPINFOWindow.CreateInfoWindow('');
+		return this.infoWindow;
+	}
+
+	/**
+	 * Event to open info window1
+	 */
+	OpenInfo({content, marker}) {
+		this.removeMarkerAnimation();
+		this.setMarkerAnimation(marker);
+		this.MAPINFOWindow.SetInfoWindowContent(this.INFOWindow, content || '');
+		this.MAPINFOWindow.OpenInfoWindow(this.INFOWindow, this.DrawnMap, marker);
+	}
+
+	/**
+	 * Removes animation from
+	 * current marker if any
+	 */
+	removeMarkerAnimation() {
+		if(this.currentMarker) {
+			this.MAPMarker.RemoveAnimation(this.currentMarker);
+		}
+	}
+
+	/**
+	 * Sets the marker animation
+	 * 
+	 */
+	setMarkerAnimation(marker) {
+		this.currentMarker = marker;
+		this.MAPMarker.SetAnimation(this.currentMarker);
+	}
 	/**
 	 * Initialize new google Map
 	 */
