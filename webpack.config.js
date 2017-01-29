@@ -24,6 +24,7 @@ var config = {
         inline: true,
         hot: true,
         watchContentBase: true,
+        open: true
     },
     plugins: [
         new ExtractTextPlugin({
