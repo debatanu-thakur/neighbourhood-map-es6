@@ -58,7 +58,6 @@ class AppServices {
             
             item.content = self.PrepareContent(item);
             item.marker.addListener('click', () => {
-                console.log(item.src);
                 map.OpenInfo(item);
                 self.FetchMoreInfo(item);
             });
@@ -87,7 +86,6 @@ class AppServices {
 
     FetchMoreInfo(item) {
         this.core.api.GetAPIPhotos(item.id).then((allData) => {
-                console.log(allData, item.id);
                 if (allData.count) {
                     const data = allData.items[0];
                     const url = `${data.prefix}${data.suffix.substr(1)}`;
