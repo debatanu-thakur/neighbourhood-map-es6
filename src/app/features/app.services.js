@@ -1,3 +1,5 @@
+import contentData from './content.template.html';
+
 class AppServices {
     constructor() {
         this.locationList = [];
@@ -7,11 +9,18 @@ class AppServices {
     INIT(element) {
         this.core.map.initMap(element, (location) => {
                 this.core.api.GetAPIInfo(location).then((resp) => {
-                    this.allVenues = resp;
-                    this.GenerateMarkers(resp);
-                    //Add info window support
-                    this.GenerateInfoWindows();
-                    this.UpdateSearchData();
+                    this.core.map.GEOServices.GetLocationName(location,
+                    (results, status) => 
+                    {
+                        if (status === 'OK') {
+                            this.currentLocation(results[1].formatted_address);
+                        }
+                        this.allVenues = resp;
+                        this.GenerateMarkers(resp);
+                        //Add info window support
+                        this.GenerateInfoWindows();
+                        this.UpdateSearchData();
+                    });
                 });
             });
     }
@@ -42,10 +51,17 @@ class AppServices {
      */
     GenerateInfoWindows() {
         const map = this.core.map;
+        const self = this;
 
         this.locationList.forEach((item) => {
             //ADD event listeners to markers
-            item.marker.addListener('click', () => map.OpenInfo(item));
+            
+            item.content = self.PrepareContent(item);
+            item.marker.addListener('click', () => {
+                console.log(item.src);
+                map.OpenInfo(item);
+                self.FetchMoreInfo(item);
+            });
         });
     }
 
@@ -62,6 +78,24 @@ class AppServices {
 
         this.SEARCHLIST.removeAll();
         this.SEARCHLIST(data);
+    }
+
+    PrepareContent(venue) {
+        let domValue = contentData.replace(/name/ig, venue.name).replace(/url/ig, venue.url || '#');
+        return domValue;
+    }
+
+    FetchMoreInfo(item) {
+        this.core.api.GetAPIPhotos(item.id).then((allData) => {
+                console.log(allData, item.id);
+                if (allData.count) {
+                    const data = allData.items[0];
+                    const url = `${data.prefix}${data.suffix.substr(1)}`;
+
+                    $('.contentImage').attr('src', url);
+                }
+                //contentImage
+            });
     }
     
 }

@@ -1,9 +1,14 @@
 @import '../third-party/materialize/css/ghpages-materialize.css';
 
-html, body, main {
+html, body {
   height: 100%;
   width: 100%;
 }
+
+main {
+  height: 90%;
+}
+
 header, main, footer {
   padding-left: 0;
 }
