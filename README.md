@@ -32,6 +32,7 @@ $ npm run build
 2. The build tool used for this project is `Webpack 2`.
 3. API used for map is [Google Map API](https://developers.google.com/maps/documentation/javascript/).
 4. API used to populate Info Window is [Foursquare API](https://developer.foursquare.com/).
+5. API used for images is [Google Street View API](https://developers.google.com/maps/documentation/streetview/).
 
 ## License
 The contents of this repo is subjected to [MIT License](https://github.com/debatanu-thakur/license-store/blob/master/mit_license.txt).
