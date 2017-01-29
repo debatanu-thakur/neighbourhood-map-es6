@@ -3,8 +3,13 @@
 This app shows the venue located in your neighborhood. This works on all kinds of devices mobile, tabs and desktops.
 ## Pre-requisites
 1. Any HTML 5 supported browser, Chrome, Safari, Firefox.
-2. Nodejs and npm installed globally.
+2. NodeJS and npm installed globally.
 3. Yarn package installer installed globally.
+
+To install yarn globally 
+```
+$ npm install yarn -g
+```
 
 ## Setup
 This project is completed using `ECMASCRIPT 2015` version and has been build using `webpack 2`.
