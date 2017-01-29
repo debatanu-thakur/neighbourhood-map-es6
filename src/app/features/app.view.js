@@ -28,7 +28,7 @@ class AppView {
         self.attrs = {
             callback(venue) {
                 myApp.core.map.OpenInfo(venue);
-                myApp.FetchMoreInfo(item);
+                myApp.FetchMoreInfo(venue);
             }
         };
         myApp.currentLocation = self.currentLocation;
