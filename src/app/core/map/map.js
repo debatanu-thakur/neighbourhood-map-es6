@@ -10,7 +10,7 @@ class MapOperations {
 			lat: 40.74,
 			lng: -73.99
 		};
-		this.address = 'New York City';
+		this.address = 'Paris';
 		this.zoom = 17;
 
 		//Assigning the services
@@ -49,12 +49,12 @@ class MapOperations {
 	 */
 	initMap(element, apiFetch) {
 		// this.setupMap(element, this.area, this.zoom);
-		this.GEOServices.GetCurrentLocation((position) => {
-			if (position) {
-				const coords = position.coords;
+		this.GEOServices.GetLocation(this.address, (results, status) => {
+			if (status === 'OK') {
+				const location = results[0].geometry.location;
 				this.area = {
-					lat: coords.latitude,
-					lng: coords.longitude
+					lat: location.lat(),
+					lng: location.lng()
 				};
 			}
 			this.setupMap(element, this.area, this.zoom);

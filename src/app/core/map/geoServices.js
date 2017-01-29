@@ -38,15 +38,10 @@ class GeoLocationService {
      * Get the adress
      * for lat-lng
      */
-    GetLocation(address) {
-        return this.geocoder.geocode({
+    GetLocation(address, callback) {
+         this.geocoder.geocode({
             address
-        }, (results, status) => {
-            if (status === 'OK') {
-                return results[0].geometry.location.lat();
-            }
-            return false;
-        });
+        }, callback);
     }
 }
 export default GeoLocationService;

@@ -13,7 +13,9 @@ class AppServices {
                     (results, status) => 
                     {
                         if (status === 'OK') {
-                            this.currentLocation(results[1].formatted_address);
+                            const address = results[6] || results[0];
+
+                            this.currentLocation(address.formatted_address);
                         }
                         this.allVenues = resp;
                         this.GenerateMarkers(resp);
