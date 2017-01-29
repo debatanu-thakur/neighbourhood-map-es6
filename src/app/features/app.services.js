@@ -57,11 +57,10 @@ class AppServices {
 
         this.locationList.forEach((item) => {
             //ADD event listeners to markers
-            
+            item.src = map.FetchStreetView(item.location.position);
             item.content = self.PrepareContent(item);
             item.marker.addListener('click', () => {
                 map.OpenInfo(item);
-                self.FetchMoreInfo(item);
             });
         });
     }
@@ -82,7 +81,7 @@ class AppServices {
     }
 
     PrepareContent(venue) {
-        let domValue = contentData.replace(/name/ig, venue.name).replace(/url/ig, venue.url || '#');
+        let domValue = contentData.replace(/name/ig, venue.name).replace(/url/ig, venue.url || '#').replace(/src="*"/, `src="${venue.src}"`);
         return domValue;
     }
 

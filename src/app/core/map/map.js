@@ -121,6 +121,15 @@ class MapOperations {
 	}
 
 	/**
+	 * Provide image from street view
+	 */
+	FetchStreetView(location) {
+		const endpoint = `//maps.googleapis.com/maps/api/streetview?size=300x300
+		&location=${location.lat},${location.lng}&key=AIzaSyAI4ADzGBzGZeWFsAlrvnNW_1p0MRd4jX4`;
+
+		return endpoint;
+	}
+	/**
 	 * Removes animation from
 	 * current marker if any
 	 */
