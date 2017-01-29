@@ -8,7 +8,11 @@ This app shows the venue located in your neighborhood. This works on all kinds o
 
 ## Setup
 This project is completed using `ECMASCRIPT 2015` version and has been build using `webpack 2`.
+
+
 Please follow the steps to load the application and run it in your browser:
+
+
 1. `git clone` the solution to your local machine. 
 2. Once inside the repo directory `yarn` and install all the dependency packages
 3. Then `npm run build` for starting the dev environment
