@@ -51,6 +51,37 @@ class APIFetch {
         
         return defered.promise();
     }
+
+    GetAPIPhotos(id) {
+        this.endpointImages = `//api.foursquare.com/v2/venues/${id}/photos`;
+        const defered = $.Deferred();
+        const date = this.getFormattedDate(new Date());
+        this.setAPIParams(date);
+
+       $.ajax({
+            url: this.endpointImages,
+            dataType: 'jsonp',
+            data: $.param({
+                client_id: this.client_id,
+                client_secret: this.client_secret,
+                v: this.v
+            }),
+            success(resp) {
+                const response = resp.response && resp.response.photos || {};
+
+                defered.resolve(response);
+            },
+            error(err) {
+                //TODO: Proper error message
+                defered.reject({
+                    error: 'Some error'
+                })
+            }
+        });
+        
+        return defered.promise();
+        
+    }
     
     setAPIParams(formatedDate, latlng) {
         this.v = formatedDate;

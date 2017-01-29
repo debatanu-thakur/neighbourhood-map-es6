@@ -18,7 +18,7 @@ class MapMarker {
         return new google.maps.Marker({
             position,
             map,
-            label: this.getLabel()
+            // label: this.getLabel()
         });
     }
 
@@ -33,7 +33,6 @@ class MapMarker {
      * Remove the marker from map
      */
     RemoveMarker(marker) {
-        console.log(marker, 'Iam ere');
         marker.setMap(null);
     }
 

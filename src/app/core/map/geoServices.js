@@ -25,18 +25,13 @@ class GeoLocationService {
      * Get the lat-lng for 
      * a place adress
      */
-    GetLocationName(lat, lng) {
-        return geocoder.geocode({
+    GetLocationName({lat, lng}, callback) {
+         this.geocoder.geocode({
             location: {
                 lat,
                 lng
             }
-        }, (results, status) => {
-            if (status === 'OK') {
-                return results[1].formatted_address;
-            }
-            return false;
-        });
+        }, callback);
     }
 
     /**
@@ -44,7 +39,7 @@ class GeoLocationService {
      * for lat-lng
      */
     GetLocation(address) {
-        return geocoder.geocode({
+        return this.geocoder.geocode({
             address
         }, (results, status) => {
             if (status === 'OK') {

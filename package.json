@@ -1,12 +1,10 @@
 {
   "name": "neighbourhood-map-es6",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This app locates different neighbouring venues near you.",
   "author": "debatanu-thakur",
   "license": "MIT",
   "scripts": {
-    "build-version": "webpack-dev-server -v",
     "build": "webpack-dev-server",
     "prod": "webpack -p"
   },
