@@ -31,7 +31,7 @@ $ npm run build
 1. This project is completed using `ECMASCRIPT 2015`.
 2. The build tool used for this project is `Webpack 2`.
 3. API used for map is [Google Map API](https://developers.google.com/maps/documentation/javascript/).
-4. API used to populate Info Window is [Foursquare API](https://developer.foursquare.com/).
+4. API used to fetch neighbouring venues is [Foursquare API](https://developer.foursquare.com/).
 5. API used for images is [Google Street View API](https://developers.google.com/maps/documentation/streetview/).
 
 ## License
