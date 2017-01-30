@@ -27,7 +27,7 @@ class AppView {
         self.searchList.extend({ rateLimit: 50 });
         self.attrs = {
             callback(venue) {
-                myApp.core.map.OpenInfo(venue);
+                myApp.OpenInfoWindow(venue);
             }
         };
         myApp.currentLocation = self.currentLocation;

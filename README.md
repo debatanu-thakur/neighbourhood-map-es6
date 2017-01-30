@@ -33,6 +33,7 @@ $ npm run build
 3. API used for map is [Google Map API](https://developers.google.com/maps/documentation/javascript/).
 4. API used to fetch neighbouring venues is [Foursquare API](https://developer.foursquare.com/).
 5. API used for images is [Google Street View API](https://developers.google.com/maps/documentation/streetview/).
+6. API used for article in info window is [Wikipedia API](http://www.mediawiki.org/wiki/API:Main_page).
 
 ## License
 The contents of this repo is subjected to [MIT License](https://github.com/debatanu-thakur/license-store/blob/master/mit_license.txt).
