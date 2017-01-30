@@ -83,6 +83,33 @@ class APIFetch {
         
     }
     
+    GetAPIWikiInfo(address) {
+        const endpoint = `//en.wikipedia.org/w/api.php`;
+        const defered = $.Deferred();
+
+        $.ajax({
+            url: endpoint,
+            dataType: 'jsonp',
+            data: $.param({
+                action: 'opensearch',
+                search: address,
+                format: 'json'
+            }),
+            success(resp) {
+            const response = (resp[2].length && resp[2])|| ['No info could be found in Wikipedia.'];
+
+                defered.resolve(response.join('\r\n'));
+            },
+            error(err) {
+                defered.reject({
+                    error: 'Failed to connect to Wiki API.'
+                });
+            }
+        });
+        
+        return defered.promise();
+    }
+
     setAPIParams(formatedDate, latlng) {
         this.v = formatedDate;
         this.ll = latlng;

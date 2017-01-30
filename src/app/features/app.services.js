@@ -63,7 +63,7 @@ class AppServices {
             item.src = map.FetchStreetView(item.location.position);
             item.content = self.PrepareContent(item);
             item.marker.addListener('click', () => {
-                map.OpenInfo(item);
+                self.OpenInfoWindow(item);
             });
         });
     }
@@ -86,6 +86,18 @@ class AppServices {
     PrepareContent(venue) {
         let domValue = contentData.replace(/name/ig, venue.name).replace(/url/ig, venue.url || '#').replace(/src="*"/, `src="${venue.src}"`);
         return domValue;
+    }
+
+    OpenInfoWindow(venue) {
+        this.core.api.GetAPIWikiInfo(venue.name).then(
+            resp => {
+                venue.content = venue.content.replace(/CONTENT/ig, resp);
+            },
+            err => {
+                window.NOTIFY.error_message(err.error, 2000);
+            }
+        ).done(() => this.core.map.OpenInfo(venue));
+        
     }
 
 }
