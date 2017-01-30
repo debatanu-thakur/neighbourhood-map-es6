@@ -45,7 +45,7 @@ class APIFetch {
                 //TODO: Proper error message
                 defered.reject({
                     error: 'Some error'
-                })
+                });
             }
         });
         
@@ -75,7 +75,7 @@ class APIFetch {
                 //TODO: Proper error message
                 defered.reject({
                     error: 'Some error'
-                })
+                });
             }
         });
         

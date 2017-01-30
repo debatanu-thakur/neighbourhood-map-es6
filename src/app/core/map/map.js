@@ -56,6 +56,8 @@ class MapOperations {
 					lat: location.lat(),
 					lng: location.lng()
 				};
+			} else {
+				window.NOTIFY.error_message('Failed to load location data. Please try again.', 2000);
 			}
 			this.setupMap(element, this.area, this.zoom);
 			if (apiFetch) {
@@ -99,7 +101,7 @@ class MapOperations {
     SetMarkers(allData) {
         allData.forEach((item) => {
             this.MAPMarker.SetMapMarker(item.marker, this.DrawnMap);
-        })
+        });
     }
 
 	/**
@@ -155,8 +157,7 @@ class MapOperations {
 			//TODO: change the center and zoom if any
 		} else {
 			this.map = new google.maps.Map(ele, {center, zoom});
-		};
-
+		}
 	}
-};
+}
 export default MapOperations;
