@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 var config = {
     context: path.resolve(__dirname, './src'),
@@ -27,6 +28,7 @@ var config = {
         open: true
     },
     plugins: [
+        new DashboardPlugin(),
         new ExtractTextPlugin({
             filename: '[name].css',
             disable: false,

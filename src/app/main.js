@@ -22,4 +22,4 @@ $.getScript('https://www.google.com/jsapi', function()
             myApp.INIT(element);
         }
     });
-});
+}).fail(() => window.NOTIFY.error_message('Loading failed for map API. Please try again.', 2000));

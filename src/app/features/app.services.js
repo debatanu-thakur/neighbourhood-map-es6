@@ -16,6 +16,9 @@ class AppServices {
                             const address = results[6] || results[0];
 
                             this.currentLocation(address.formatted_address);
+                        } else {
+                            window.NOTIFY
+                            .error_message('There was some error loading the location name. Please try loading again', 2000);
                         }
                         this.allVenues = resp;
                         this.GenerateMarkers(resp);
@@ -23,7 +26,7 @@ class AppServices {
                         this.GenerateInfoWindows();
                         this.UpdateSearchData();
                     });
-                });
+                }, (err) => window.NOTIFY.error_message('Failed to load location venue data. Please try again.', 2000));
             });
     }
 
@@ -85,18 +88,6 @@ class AppServices {
         return domValue;
     }
 
-    FetchMoreInfo(item) {
-        this.core.api.GetAPIPhotos(item.id).then((allData) => {
-                if (allData.count) {
-                    const data = allData.items[0];
-                    const url = `${data.prefix}${data.suffix.substr(1)}`;
-
-                    $('.contentImage').attr('src', url);
-                }
-                //contentImage
-            });
-    }
-    
 }
 
 export default new AppServices();
