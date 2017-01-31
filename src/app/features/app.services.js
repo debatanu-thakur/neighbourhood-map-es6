@@ -20,11 +20,7 @@ class AppServices {
                             window.NOTIFY
                             .error_message('There was some error loading the location name. Please try loading again', 2000);
                         }
-                        this.allVenues = resp;
-                        this.GenerateMarkers(resp);
-                        //Add info window support
-                        this.GenerateInfoWindows();
-                        this.UpdateSearchData();
+                        this.updateAllInfo(resp);
                     });
                 }, (err) => window.NOTIFY.error_message('Failed to load location venue data. Please try again.', 2000));
             });
@@ -98,6 +94,20 @@ class AppServices {
             }
         ).done(() => this.core.map.OpenInfo(venue));
         
+    }
+
+    //TODO: Fetch from foursquare the location
+    //venue details using api /near
+    FetchDataFromAPI(location) {
+
+    }
+
+    updateAllInfo(resp) {
+        this.allVenues = resp;
+        this.GenerateMarkers(resp);
+        //Add info window support
+        this.GenerateInfoWindows();
+        this.UpdateSearchData();
     }
 
 }

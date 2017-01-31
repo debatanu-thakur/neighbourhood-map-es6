@@ -1,6 +1,7 @@
 import GeoServices from './geoServices';
 import MapMarker from './mapMarker';
 import MapInfoWindow from './mapInfoWindow';
+import AutoCompleteService from './autoCompleteService';
 
 class MapOperations {
 	constructor() {
@@ -42,6 +43,11 @@ class MapOperations {
 	get MAPINFOWindow() {
 		this.mapInfoWindow = this.mapInfoWindow || new MapInfoWindow();
 		return this.mapInfoWindow;
+	}
+	//Map Auto Complete Service
+	get AUTOCompleteService() {
+		this.autoCompleteService = this.autoCompleteService || new AutoCompleteService();
+		return this.autoCompleteService;
 	}
 
 	/**
