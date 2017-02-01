@@ -4,25 +4,19 @@ class AppServices {
     constructor() {
         this.locationList = [];
         this.allVenues = [];
+        this.duration = 4000;
     }
 
-    INIT(element) {
+    INIT(element, address) {
+        if (address) {
+            this.core.map.address = address;
+        }
+
         this.core.map.initMap(element, (location) => {
                 this.core.api.GetAPIInfo(location).then((resp) => {
-                    this.core.map.GEOServices.GetLocationName(location,
-                    (results, status) => 
-                    {
-                        if (status === 'OK') {
-                            const address = results[6] || results[0];
-
-                            this.currentLocation(address.formatted_address);
-                        } else {
-                            window.NOTIFY
-                            .error_message('There was some error loading the location name. Please try loading again', 2000);
-                        }
-                        this.updateAllInfo(resp);
-                    });
-                }, (err) => window.NOTIFY.error_message('Failed to load location venue data. Please try again.', 2000));
+                    this.headerName(this.core.map.address);
+                    this.updateAllInfo(resp);
+                }, (err) => window.NOTIFY.error_message('Failed to load location venue data. Please try again.', this.duration));
             });
     }
 
@@ -90,7 +84,7 @@ class AppServices {
                 venue.content = venue.content.replace(/CONTENT/ig, resp);
             },
             err => {
-                window.NOTIFY.error_message(err.error, 2000);
+                window.NOTIFY.error_message(err.error, this.duration);
             }
         ).done(() => this.core.map.OpenInfo(venue));
         
@@ -99,7 +93,7 @@ class AppServices {
     //TODO: Fetch from foursquare the location
     //venue details using api /near
     FetchDataFromAPI(location) {
-
+        this.INIT(null, location);
     }
 
     updateAllInfo(resp) {

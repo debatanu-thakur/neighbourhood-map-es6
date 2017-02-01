@@ -161,6 +161,7 @@ class MapOperations {
 	setupMap(ele, center, zoom) {
 		if (this.DrawnMap) {
 			//TODO: change the center and zoom if any
+			this.map.panTo(center);
 		} else {
 			this.map = new google.maps.Map(ele, {center, zoom});
 		}

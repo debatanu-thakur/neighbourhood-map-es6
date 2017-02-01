@@ -8,6 +8,7 @@ class APIFetch {
         this.client_secret= `E1Q4ATW0B23NZ3BGUMH5VECGWFPB3I1GWOFD3HXTMAI1PHZ1`;
         this.v = ``;
         this.ll=``;
+        this.near = ``;
     }
 
     getFormattedDate(date) {
@@ -58,7 +59,7 @@ class APIFetch {
         const date = this.getFormattedDate(new Date());
         this.setAPIParams(date);
 
-       $.ajax({
+        $.ajax({
             url: this.endpointImages,
             dataType: 'jsonp',
             data: $.param({
@@ -103,6 +104,35 @@ class APIFetch {
             error(err) {
                 defered.reject({
                     error: 'Failed to connect to Wiki API.'
+                });
+            }
+        });
+        
+        return defered.promise();
+    }
+
+    GetAPIInfoAdress(address) {
+        const defered = $.Deferred();
+        const date = this.getFormattedDate(new Date());
+        this.setAPIParams(date, this.getLatLng(location));
+        
+        $.ajax({
+            url: this.endpoint,
+            dataType: 'jsonp',
+            data: $.param({
+                client_id: this.client_id,
+                client_secret: this.client_secret,
+                v: this.v,
+                near: address
+            }),
+            success(resp) {
+                console.log(resp);
+                defered.resolve(resp.response.venues.map(v => new Venue(v)));
+            },
+            error(err) {
+                //TODO: Proper error message
+                defered.reject({
+                    error: 'Some error'
                 });
             }
         });

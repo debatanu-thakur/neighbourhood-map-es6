@@ -5,3 +5,7 @@
 .app__view {
     overflow: hidden;
 }
+
+.material-icons.app__simple-menu {
+    display: inline;
+}
