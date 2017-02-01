@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack-dashboard -- webpack-dev-server",
-    "prod": "webpack -p"
+    "prod": "webpack-dashboard -- webpack -p"
   },
   "repository": {
     "type": "git",
