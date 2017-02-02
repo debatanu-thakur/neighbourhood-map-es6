@@ -11,7 +11,7 @@ myApp.core = core;
 ko.components.register(app.name, app.prop);
 ko.applyBindings();
 
-$.getScript('https://www.google.com/jsapi', function()
+$.getScript('//www.google.com/jsapi', function()
 {
     google.load('maps', '3', {
         other_params: `key=AIzaSyC2Xryh23SOWVxOqNWKPDANkB9SQpPGe00&libraries=places`,
