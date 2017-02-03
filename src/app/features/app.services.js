@@ -75,7 +75,7 @@ class AppServices {
     }
 
     PrepareContent(venue) {
-        const domValue = contentData.replace(/name/g, venue.name).replace(/url/, venue.url || '#').replace(/src=.*xx> /ig, `src="${venue.src}"`);
+        const domValue = contentData.replace(/name/g, venue.name).replace(/url/, venue.url || '#').replace(/<img>/ig, `<img src="${venue.src}" alt="${venue.name}">`);
 
         return domValue;
     }
