@@ -52,6 +52,7 @@ class AppServices {
             //ADD event listeners to markers
             item.src = map.FetchStreetView(item.location.position);
             item.content = self.PrepareContent(item);
+            console.log(item.content);
             item.marker.addListener('click', () => {
                 self.OpenInfoWindow(item);
             });
@@ -74,7 +75,8 @@ class AppServices {
     }
 
     PrepareContent(venue) {
-        let domValue = contentData.replace(/name/ig, venue.name).replace(/url/ig, venue.url || '#').replace(/src="*"/, `src="${venue.src}"`);
+        const domValue = contentData.replace(/name/g, venue.name).replace(/url/, venue.url || '#').replace(/src=.*xx> /ig, `src="${venue.src}"`);
+
         return domValue;
     }
 
